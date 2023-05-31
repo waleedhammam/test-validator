@@ -13,4 +13,4 @@ jobs:
           path: kubernetes
           policies-path: policies
           remediate: true # enable auto remediation
-          git-repo-branch: main
+          branch: main
