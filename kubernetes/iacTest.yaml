@@ -1,6 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: myapp-1
+  labels:
+    app: myapp-1
+spec:
+  selector:
+    matchLabels:
+      app: myapp-1
+  template:
+    metadata:
+      labels:
+        app: myapp-1
+    spec:
+      containers:
+      - name: container-1
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
+      - name: container-2
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
+      - name: container-3
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: myapp-2
   labels:
     app: myapp-2
@@ -36,35 +65,6 @@ spec:
     spec:
       containers:
       - name: container-1
-        securityContext:
-          privileged: false
-          allowPrivilegeEscalation: false
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: myapp-1
-  labels:
-    app: myapp-1
-spec:
-  selector:
-    matchLabels:
-      app: myapp-1
-  template:
-    metadata:
-      labels:
-        app: myapp-1
-    spec:
-      containers:
-      - name: container-1
-        securityContext:
-          privileged: false
-          allowPrivilegeEscalation: false
-      - name: container-2
-        securityContext:
-          privileged: false
-          allowPrivilegeEscalation: false
-      - name: container-3
         securityContext:
           privileged: false
           allowPrivilegeEscalation: false
