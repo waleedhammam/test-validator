@@ -14,14 +14,14 @@ spec:
         app: someapp
     spec:
       containers:
-        - name: container-1
-          securityContext:
-            privileged: true
-        - name: container-2
-          securityContext:
-            privileged: true
-        - name: container-6
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: false
+      - name: container-1
+        securityContext:
+          privileged: false
+      - name: container-2
+        securityContext:
+          privileged: false
+      - name: container-6
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
 
