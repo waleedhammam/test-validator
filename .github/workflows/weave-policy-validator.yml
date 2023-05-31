@@ -8,7 +8,7 @@ jobs:
     permissions: write-all
     steps:
       - uses: actions/checkout@v3
-      - uses: waleedhammam/weave-action@v1.1
+      - uses: waleedhammam/weave-action@v1
         with:
           path: kubernetes
           policies-path: policies
