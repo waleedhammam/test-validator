@@ -1,6 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: myapp-3
+  labels:
+    app: myapp-3
+spec:
+  selector:
+    matchLabels:
+      app: myapp-3
+  template:
+    metadata:
+      labels:
+        app: myapp-3
+    spec:
+      containers:
+      - name: container-1
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: myapp-1
   labels:
     app: myapp-1
@@ -14,18 +35,18 @@ spec:
         app: myapp-1
     spec:
       containers:
-        - name: container-1
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
-        - name: container-2
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
-        - name: container-3
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
+      - name: container-1
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
+      - name: container-2
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
+      - name: container-3
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -43,30 +64,8 @@ spec:
         app: myapp-2
     spec:
       containers:
-        - name: container-1
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: myapp-3
-  labels:
-    app: myapp-3
-spec:
-  selector:
-    matchLabels:
-      app: myapp-3
-  template:
-    metadata:
-      labels:
-        app: myapp-3
-    spec:
-      containers:
-        - name: container-1
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
-
+      - name: container-1
+        securityContext:
+          privileged: false
+          allowPrivilegeEscalation: false
 
