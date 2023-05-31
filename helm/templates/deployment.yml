@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-4
+  labels:
+    app: myapp-4
+spec:
+  selector:
+    matchLabels:
+      app: myapp-4
+  template:
+    metadata:
+      labels:
+        app: myapp-4
+    spec:
+      containers:
+        - name: container-1
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          command: ["/bin/bash"]
+          args: ["-c", "sleep 1d"]
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
