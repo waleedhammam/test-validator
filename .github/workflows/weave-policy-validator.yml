@@ -1,16 +1,14 @@
-name: Weaveworks
+name: Weaveworks Policy Validator
 on:
-  push:
-    branches: [ main ]
+  pull_request:
+    branches: [ main, dev ]
 jobs:
   main:
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - uses: actions/checkout@v3
-      - uses: waleedhammam/weave-action@v1
+      - uses: weaveworks/weave-action@v1
         with:
-          path: kubernetes
-          policies-path: policies
-          remediate: true # enable auto remediation
-          branch: main
+          path: ./                    #entites to scan
+          policies-path: ./policies   # policies path
+          remediate: true             # enable auto remediation
